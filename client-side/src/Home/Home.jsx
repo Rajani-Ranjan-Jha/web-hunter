@@ -150,7 +150,7 @@ const Home = () => {
             <Toaster />
 
             {WebData && WebData.length > 0 &&
-                (<div className="my-10 w-full flex justify-center items-center gap-5">
+                (<div className="my-10 w-full flex md:flex-row flex-col justify-center items-center gap-5">
                     <input
                         className="p-2 border border-violet-600 dark:border-white focus:outline-none focus:shadow-md focus:shadow-violet-600 dark:focus:shadow-white rounded-xl "
                         type="text"

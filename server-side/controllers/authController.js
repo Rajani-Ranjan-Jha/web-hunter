@@ -22,15 +22,15 @@ const loginAdmin = async (req, res) => {
 
     // Generate JWT token
     const token = await generateTokenForAdmin(admin._id);
-    console.log(`token successfully generated (authController): ${token}`)
+    // console.log(`token successfully generated (authController): ${token}`)
 
 
     res.cookie("LoginToken", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      // sameSite: "lax",
-      // path: "/",
-      // maxAge: 24 * 60 * 60 * 1000
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/",
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
     
 
@@ -56,6 +56,8 @@ const logoutAdmin = (req, res) => {
     res.clearCookie("LoginToken",{
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/",
     });
     return res.status(200).json({ message: "Logout successful ✔️✔️" });
   } catch (error) {

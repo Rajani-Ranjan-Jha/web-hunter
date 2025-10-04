@@ -17,7 +17,7 @@ export async function loginAdmin(formData) {
       credentials: "include",
     });
 
-    const data = await response.json(); // Parse JSON once
+    const data = await response.json();
 
     if (!response.ok) {
       console.log("Login failed:", data.message);
@@ -26,7 +26,7 @@ export async function loginAdmin(formData) {
         message: data.message || "Login failed!",
       };
     }
-    console.log(`Server result on login: ${data.message}`);
+    console.log(`${data.message}`);
     return {
       AdminStatus: data.isAdmin,
       message: data.message,

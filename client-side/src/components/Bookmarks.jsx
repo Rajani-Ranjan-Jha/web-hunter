@@ -111,7 +111,7 @@ const Bookmarks = () => {
             )))
 
         ) : (
-          <h3 className="text-2xl">No data available !!</h3>
+          <h3 className="text-2xl">No bookmarks available !!</h3>
         )}
       </div>
     </div>

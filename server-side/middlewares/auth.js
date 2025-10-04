@@ -3,15 +3,15 @@ const { validateToken } = require("../utils/auth");
 function checkForToken(req, res, next) {
   const token = req.cookies.LoginToken;
   if (!token) {
-    console.log("did not get any token (checkForToken)");
+    // console.log("did not get any token (checkForToken)");
     return next();
   }
-  console.log("got the token", token);
+  // console.log("got the token", token);
 
   try {
     const userPayload = validateToken(token);
     req.admin = userPayload;
-    console.log("userPlayload is created (checkForToken)", req.admin);
+    // console.log("userPlayload is created (checkForToken)", req.admin);
     next();
   } catch (error) {
     // res.status(401).json({message: 'Invalid token'})
